@@ -30,19 +30,14 @@ export default function Setting() {
         const [account] = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
+        if (tokenOwner.toLowerCase() !== account.toLowerCase()) {
+          alert("Only token owner can use this functionality.");
+          return;
+        }
         const txn = await nftContract.setBaseURI(inputValue.baseUri);
         console.log("Setting base uri...");
         const receipt = await txn.wait();
         console.log("Setting completed...", txn.hash);
-        console.log(receipt.events);
-        console.log(receipt.events[0]);
-        console.log(receipt.events[1].args[0]);
-        console.log(receipt.events[1].args.amount.toString());
-        console.log(receipt.events[1].args.message);
-
-        // let tokenSupply = await tokenContract.totalSupply();
-        // tokenSupply = utils.formatEther(tokenSupply);
-        // setTokenTotalSupply(tokenSupply);
       } else {
         console.log("Ethereum object not found, install Metamask.");
       }
@@ -64,19 +59,14 @@ export default function Setting() {
         const [account] = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
+        if (tokenOwner.toLowerCase() !== account.toLowerCase()) {
+          alert("Only token owner can use this functionality.");
+          return;
+        }
         const txn = await nftContract.setPublicMintEnabled(publicMintEnable);
         console.log("Setting public mint...");
         const receipt = await txn.wait();
         console.log("Setting completed...", txn.hash);
-        console.log(receipt.events);
-        console.log(receipt.events[0]);
-        console.log(receipt.events[1].args[0]);
-        console.log(receipt.events[1].args.amount.toString());
-        console.log(receipt.events[1].args.message);
-
-        // let tokenSupply = await tokenContract.totalSupply();
-        // tokenSupply = utils.formatEther(tokenSupply);
-        // setTokenTotalSupply(tokenSupply);
       } else {
         console.log("Ethereum object not found, install Metamask.");
       }
