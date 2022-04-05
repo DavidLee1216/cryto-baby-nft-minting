@@ -33,6 +33,18 @@ export default function MintPage() {
 
   return (
     <div className="minting-page">
+      <div
+        style={{
+          textAlign: "center",
+          color: "white",
+          fontSize: "30px",
+          fontWeight: "bold",
+          marginBottom: "20px",
+          marginTop: "80px",
+        }}
+      >
+        CRYTO BABY NFT MINTING PAGE
+      </div>
       <div className="mt-5 ms-5">
         {error && <p className="text-2xl text-red-700">{error}</p>}
         {isWalletConnected && (

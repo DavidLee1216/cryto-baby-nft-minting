@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ethers, utils } from "ethers";
+import { getRevertReason } from "eth-revert-reason";
 import abi from "../contracts/CryptoBaby.json";
 import "./components.css";
 
@@ -34,20 +35,24 @@ export default function PublicMint() {
           method: "eth_requestAccounts",
         });
         const txn = await nftContract.publicMint(inputValue.mintCount, {
-          value: ethers.utils.parseEther(inputValue.etherToPay),
+          value: ethers.utils.parseEther(inputValue.etherToPay.toString()),
         });
         console.log("Minting tokens...");
         const receipt = await txn.wait();
         console.log("Tokens minted...", txn.hash);
-
-        // let tokenSupply = await tokenContract.totalSupply();
-        // tokenSupply = utils.formatEther(tokenSupply);
-        // setTokenTotalSupply(tokenSupply);
       } else {
         console.log("Ethereum object not found, install Metamask.");
       }
     } catch (error) {
-      console.log(error);
+      const err = error.message;
+      if (err.includes("requested count"))
+        alert("requested count can not be zero or more than 2");
+      else if (err.includes("insufficient funds"))
+        alert("check your wallet before mint");
+      else if (err.includes("Not enough ether")) alert("Not enough ether");
+      else if (err.includes("you should mint"))
+        alert("you should mint after an hour since you make last mint");
+      // console.log(err);
     }
   };
 

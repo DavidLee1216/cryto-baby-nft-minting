@@ -45,15 +45,6 @@ export default function Airdrop() {
         console.log("Minting tokens...");
         const receipt = await txn.wait();
         console.log("Tokens minted...", txn.hash);
-        console.log(receipt.events);
-        console.log(receipt.events[0]);
-        console.log(receipt.events[1].args[0]);
-        console.log(receipt.events[1].args.amount.toString());
-        console.log(receipt.events[1].args.message);
-
-        // let tokenSupply = await tokenContract.totalSupply();
-        // tokenSupply = utils.formatEther(tokenSupply);
-        // setTokenTotalSupply(tokenSupply);
       } else {
         console.log("Ethereum object not found, install Metamask.");
       }
