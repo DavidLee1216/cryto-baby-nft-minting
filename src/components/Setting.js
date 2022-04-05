@@ -3,7 +3,7 @@ import { ethers, utils } from "ethers";
 import abi from "../contracts/CryptoBaby.json";
 
 export default function Setting() {
-  const contractAddress = "0xeeF34a63747AfBF0AF2295CFEc3A7d1520C0b5cc";
+  const contractAddress = "0x2cE1951dd9c16438C4C72F791F4E4dEE6de961F5";
   const contractABI = abi.abi;
 
   const [inputValue, setInputValue] = useState({

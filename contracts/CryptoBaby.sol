@@ -21,7 +21,7 @@ contract CryptoBaby is ERC721URIStorage, Ownable {
     bool public isMintEnabled = true;
     bool public isPublicMintEnabled = false;
     string baseURI = "";
-    uint256 private _antibotInterval = 3600;
+    uint256 private _antibotInterval = 360;
     uint256 private _mintIndexForSale = 1;
     mapping(address => bool) private _whiteList;
     mapping(address => uint256) private _mintedWallet;
@@ -72,7 +72,7 @@ contract CryptoBaby is ERC721URIStorage, Ownable {
     function whiteListMint(uint256[] calldata tokenIds) external payable{
         require(_whiteList[msg.sender], "you are not in white list");
         require(msg.value >= ethWhitePrice.mul(tokenIds.length), "Not enough ether");
-        require(_lastCallBlockNumber[msg.sender].add(_antibotInterval) > block.number, "you should mint after an hour since you make last mint");
+        require(_lastCallBlockNumber[msg.sender].add(_antibotInterval) < block.number, "you should mint after an hour since you make last mint");
         require(balanceOf(msg.sender)+tokenIds.length <= maxWalletCount, "Exceed max amount per person");
         require(tokenIds.length > 0 && tokenIds.length < 3, "requested count can not be zero or more than 2");
         for(uint256 i = 0; i < tokenIds.length; i++) {
@@ -163,6 +163,14 @@ contract CryptoBaby is ERC721URIStorage, Ownable {
 
     function getWhiteMintPrice() external view returns (uint256) {
         return ethWhitePrice;
+    }
+
+    function getBlockNumber() public view returns (uint256){
+        return block.number;
+    }
+
+    function getLastBlockNumber() public view returns (uint256){
+        return _lastCallBlockNumber[msg.sender];
     }
 
 }
