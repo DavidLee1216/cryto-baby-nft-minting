@@ -43,7 +43,7 @@ export default function MintPage() {
           marginTop: "80px",
         }}
       >
-        CRYTO BABY NFT MINTING PAGE
+        CRYPTO BABY NFT MINTING PAGE
       </div>
       <div className="mt-5 ms-5">
         {error && <p className="text-2xl text-red-700">{error}</p>}
