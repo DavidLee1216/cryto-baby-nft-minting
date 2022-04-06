@@ -173,4 +173,14 @@ contract CryptoBaby is ERC721URIStorage, Ownable {
         return _lastCallBlockNumber[msg.sender];
     }
 
+    function getBalance() public view onlyOwner returns (uint256){
+        return address(this).balance;
+    }
+
+    function withdraw() external onlyOwner{
+        address owner = owner();
+        require(owner != address(0), "ERC721: address zero is not a valid owner");
+        payable(owner).transfer(address(this).balance);
+    }
+
 }

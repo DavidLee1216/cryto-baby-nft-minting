@@ -3,7 +3,7 @@ import { ethers, utils } from "ethers";
 import abi from "../contracts/CryptoBaby.json";
 
 export default function Setting() {
-  const contractAddress = "0x2cE1951dd9c16438C4C72F791F4E4dEE6de961F5";
+  const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
   const contractABI = abi.abi;
 
   const [inputValue, setInputValue] = useState({
@@ -105,7 +105,7 @@ export default function Setting() {
   }, []);
   return (
     <div>
-      <strong className="text-white mb-2">Settings (for only owner)</strong>
+      <strong className="text-white mb-2">Settings (only for owner)</strong>
       <div className="settings">
         <div className="uri-setting">
           <span className="ms-3 text-white">Base uri:</span>

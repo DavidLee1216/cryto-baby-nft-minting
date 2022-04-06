@@ -4,7 +4,7 @@ import abi from "../contracts/CryptoBaby.json";
 import "./components.css";
 
 export default function Airdrop() {
-  const contractAddress = "0x2cE1951dd9c16438C4C72F791F4E4dEE6de961F5";
+  const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
   const [inputValue, setInputValue] = useState({
     walletAddress: "",
     airdropId: "",
@@ -55,8 +55,8 @@ export default function Airdrop() {
 
   return (
     <div>
-      <div className="mt-5 mb-9">
-        <strong className="text-white mb-2">Airdrop (for only owner)</strong>
+      <div className="mt-5">
+        <strong className="text-white mb-2">Airdrop (only for owner)</strong>
         <form className="form-style airdrop">
           <input
             type="text"

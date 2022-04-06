@@ -70,7 +70,8 @@
 
 .airdrop,
 .public-mint,
-.settings {
+.settings,
+.withdraw {
   border-radius: 16px;
   border-width: 2px;
   border: 1px solid yellow;

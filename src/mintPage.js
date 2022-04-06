@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Airdrop from "./components/Airdrop";
 import PublicMint from "./components/PublicMint";
 import Setting from "./components/Setting";
+import Withdraw from "./components/Withdraw";
 
 export default function MintPage() {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
@@ -63,6 +64,7 @@ export default function MintPage() {
       <Setting></Setting>
       <Airdrop></Airdrop>
       <PublicMint></PublicMint>
+      <Withdraw></Withdraw>
     </div>
   );
 }

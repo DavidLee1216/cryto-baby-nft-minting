@@ -5,7 +5,8 @@ import abi from "../contracts/CryptoBaby.json";
 import "./components.css";
 
 export default function PublicMint() {
-  const contractAddress = "0x2cE1951dd9c16438C4C72F791F4E4dEE6de961F5";
+  const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
+
   const [inputValue, setInputValue] = useState({
     mintCount: 0,
     etherToPay: 0.05,
@@ -58,7 +59,7 @@ export default function PublicMint() {
 
   return (
     <div>
-      <div className="mt-5 mb-9">
+      <div className="mt-5">
         <strong className="text-white mb-2">
           Public Mint (0.05 ether for one item)
         </strong>
