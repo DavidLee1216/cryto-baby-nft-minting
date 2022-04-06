@@ -6,7 +6,6 @@
 /cache
 /.pnp
 .pnp.js
-.env
 .gitignore
 
 # testing
